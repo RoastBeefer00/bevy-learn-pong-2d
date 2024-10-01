@@ -61,10 +61,10 @@ fn move_paddle(
     time: Res<Time>
 ) {
     for (mut pos, settings) in &mut paddles {
-        if  input.pressed(settings.move_up) {
+        if input.pressed(settings.move_up) && pos.translation.y < 170.0 {
             pos.translation.y += 100.0 * time.delta_seconds();
         }
-        if  input.pressed(settings.move_down) {
+        if input.pressed(settings.move_down) && pos.translation.y > -170.0 {
             pos.translation.y -= 100.0 * time.delta_seconds();
         }
     }
